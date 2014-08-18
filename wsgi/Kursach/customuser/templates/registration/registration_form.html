@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block content %}
+                <div id="posts">
+                    <script type="text/javascript" src="{% static "js/form-validation.js" %}"></script>
+                    <form id="contactForm" method="post" action="/аккаунты/Регистрация/">
+                    {% csrf_token %}
+                    <h1 class="sub-heading">Регистрация</h1>
+                    <fieldset>
+
+                            <div>
+                                <input name="{{ form.username.html_name }}" id="id_{{ form.username.html_name}}" type="text" class="form-poshytip" title="{{ form.username.help_text }}">
+								<label>{{ form.username.label }}</label>
+                            </div>
+                            <div>
+                                <input name="{{ form.email.html_name }}" id="id_{{ form.email.html_name}}" type="email" class="form-poshytip" title="Введите свой e-mail">
+								<label>{{ form.email.label }}</label>
+                            </div>
+                            <div>
+                                <input name="{{ form.password1.html_name }}" id="id_{{ form.password1.html_name}}" type="password" class="form-poshytip" title="Введите пароль">
+								<label>{{ form.password1.label }}</label>
+                            </div>
+                            <div>
+                                <input name="{{ form.password2.html_name }}" id="id_{{ form.password2.html_name}}" type="password" class="form-poshytip" title="{{ form.password2.help_text }}">
+								<label>{{ form.password2.label }}</label>
+                            </div>
+
+                         <p>
+                             <input type="submit" value="Зарегистрироваться" name="submit" id="submit"/>
+                         </p>
+                    </fieldset>
+                    </form>
+                </div>
+{% endblock %}

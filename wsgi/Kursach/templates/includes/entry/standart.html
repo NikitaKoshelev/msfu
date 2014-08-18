@@ -1,0 +1,70 @@
+{% load staticfiles %}
+                    <article class="format-standard">
+
+                        <div class="date-holder">
+
+                            <div class="entry-date">
+                                <span class="entry-day">
+                                    {{ article.article_dateCreate|date:'d' }}
+                                </span>
+                                <span class="entry-year">
+                                    {{ article.article_dateCreate|date:'M y'|lower }}
+                                </span>
+                            </div>
+
+                            <div class="feature-image">
+                                {% if not article.article_preview %}
+                                    <img src="{% static "img/dummies/700x380.gif" %}" alt="Превью" />
+                                {% else %}
+                                    <img src="/media/{{ article.article_preview }}/" alt="Превью" />
+                                {% endif %}
+                                <span class="entry-buttons">
+                                    <span class="center-buttons">
+                                        <a href="{{ article.get_absolute_url }}" class="read-more">
+
+                                        </a>
+                                        {% if not article.article_preview %}
+                                            <a href="{% static "img/dummies/700x380.gif" %}" class="zoom-it" rel="prettyPhoto"></a>
+                                        {% else %}
+                                            <a href="/media/{{ article.article_preview }}/" class="zoom-it" rel="prettyPhoto"></a>
+                                        {% endif %}
+                                    </span>
+                                </span>
+                            </div>
+
+                        </div>
+                        <div class="entry-top"></div>
+                        <h4 class="entry-title">
+                            <span class="title">
+                                <a href="/статья/{{ article.name }}/">
+                                    {{ article.title }}
+                                </a>
+                            </span>
+                            <span class="entry-comments">
+                                <a href="/статья/{{ article.name }}/#comments" title="Перейти к комментариям" class="poshytip">
+                                    {{ article.get_quantity_comments }}
+                                </a>
+                            </span>
+                            <span>Рейтинг: {{ article.get_quantity_likes }}</span>
+                        </h4>
+                        <div class="entry-excerpt">
+                            <p>
+                            Тег(и):
+                            {% for tag in article.article_tags.get_query_set %}
+                                {{ tag.title }}
+                            {% endfor %}
+                            </p>
+                            <p>Категория(и):
+                            {% for category in article.article_categories.get_query_set %}
+                                {{ category.title }}
+                            {% endfor %}
+                            </p>
+                            <p>
+                            {% autoescape off %}
+                                {{ article.article_text|truncatewords_html:50|striptags  }}
+                            {% endautoescape %}
+                            </p>
+                            <p class="project-client">{{ article.user }}</p>
+                        </div>
+
+                    </article>

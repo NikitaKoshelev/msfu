@@ -1,0 +1,49 @@
+{% load staticfiles %}
+                    <article class="format-gallery">
+                    <div class="date-holder">
+                        <div class="slides-js">
+                            <div class="slides_container">
+                                {% for article in popular_articles %}
+
+                                <div style="max-width: 700px">
+                                    <a href="{{ article.get_absolute_url }}" class="Читать больше">
+                                    {% if not article.article_preview %}
+                                        <img src="{% static "img/dummies/700x380.gif" %}" alt="Превью"  />
+                                    {% else %}
+                                        <img src="/media/{{ article.article_preview }}" alt="Превью" />
+                                    {% endif %}
+                                    </a>
+                                    <div class="entry-top"></div>
+                                    <h4 class="entry-title">
+                                        <span class="title">
+                                            {{ article.title }}
+                                        </span>
+                                        <span class="entry-comments">
+                                            <a href="{{ article.get_absolute_url }}#comments" title="Перейти к комментариям" class="poshytip">
+                                                {{ article.get_quantity_comments }}
+                                            </a>
+                                        </span>
+                                        <span>Рейтинг: {{ article.get_quantity_likes }}</span>
+                                    </h4>
+                                    <div class="entry-excerpt">
+                                        <p>
+                                            {% autoescape off %}
+                                                {{ article.article_text|truncatewords_html:20|striptags }}
+                                            {% endautoescape %}
+                                        </p>
+                                    </div>
+                                <div class="entry-date">
+                                    <span class="entry-day">
+                                        {{ article.article_dateCreate|date:'d' }}
+                                    </span>
+                                    <span class="entry-year">
+                                        {{ article.article_dateCreate|date:'M y'|lower }}
+                                    </span>
+                                </div>
+                                </div>
+
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    </article>

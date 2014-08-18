@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+                <div id="posts">
+                    <h2 class="sub-heading">
+                       Авторы
+                    </h2>
+
+                        {% for author in authors %}
+                            {% if author.authot_wiki %}
+                                <a href="{{ author.author_wiki }}">Wiki</a>
+                            {% endif %}
+                            <p>{{ author.author_nameFirst }} {{ author.author_nameLast }}</p>
+
+                        {% endfor %}
+
+                </div>
+                <div class="clear">
+
+                </div>
+
+{% endblock %}

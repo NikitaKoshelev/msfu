@@ -1,0 +1,59 @@
+{% load staticfiles %}
+                    <article class="format-image">
+
+                        <div class="feature-image">
+                            {% if not article.article_preview %}
+                                <img src="{% static "img/dummies/700x380.gif" %}" alt="Featured" />
+                            {% else %}
+                                <img src="/media/{{ article.article_preview }}" alt="Featured" />
+                            {% endif %}
+                            <span class="entry-buttons">
+                                <span class="center-buttons">
+                                    {% if not article.article_preview %}
+                                        <a href="{% static "img/dummies/700x380.gif" %}" class="zoom-it" rel="prettyPhoto"></a>
+                                    {% else %}
+                                        <a href="/media/{{ article.article_preview }}" class="zoom-it" rel="prettyPhoto"></a>
+                                    {% endif %}
+                                </span>
+                            </span>
+                        </div>
+                        <div class="entry-top"></div>
+                        <h4 class="entry-title">
+                            <span class="title">
+                                {{ article.title }}
+                            </span>
+                            <span class="entry-comments">
+                                <a href="#comments" title="перейти к комментариям" class="poshytip">
+                                    {{ article.get_quantity_comments }}
+                                </a>
+                            </span>
+                            {% if user_auth %}
+                            <a href="♥/">
+                            <span class="entry-like">
+
+                            </span>
+                            </a>
+                            <a href="dis♥/">
+                            <span class="entry-dislike">
+                            </span>
+                            </a>
+                            {% endif %}
+                            <span>Рейтинг: {{ article.get_quantity_likes }}</span>
+                        </h4>
+                        <div style="max-width: 700px;">
+                        <p>
+                        {% autoescape off %}
+                            {{ article.article_text }}
+                        {% endautoescape %}
+                        </p>
+                        </div>
+                        <div class="entry-date">
+                            <span class="entry-day">
+                                {{ article.article_dateCreate|date:'d' }}
+                            </span>
+                            <span class="entry-year">
+                                {{ article.article_dateCreate|date:'M y'|lower }}
+                            </span>
+                        </div>
+
+                    </article>

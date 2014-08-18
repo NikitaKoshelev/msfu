@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block title %}
+    Single
+{% endblock %}
+{% block content %}
+{% load staticfiles %}
+<!-- posts -->
+                <div id="posts">
+
+                    <h1 class="sub-heading">{{ article.title}}</h1>
+                    {% for tag in article.article_tags.get_query_set %}
+                        <div>{{ tag.title }}</div>
+                    {% endfor %}
+                    {% for category in article.article_categories.get_query_set %}
+                        <div>{{ category.title }}</div>
+                    {% endfor %}
+
+                    <!-- entry-standard -->
+                        {% include 'includes/entry/image.html' %}
+                    <!-- ENDS entry-standard -->
+
+                    <div class="clearfix"></div>
+
+                    <!-- Comments switcher -->
+                        {% include 'includes/comments_switcher.html' %}
+                        <!-- Respond-->
+                        <div id="respond">
+							<form action="" method="post" id="commentform">
+                                {% csrf_token %}
+								<h4 class="s-title">
+                                    Оставить комментарий
+                                </h4>
+								{% for field in form %}
+                                    {{ field }}
+                                {% endfor %}
+
+								<p>
+                                    <input name="submit" type="submit" id="submit" tabindex="5" value="Опубликовать" />
+                                </p>
+
+								<input type='hidden' name='comment_post_ID' value='' id='comment_post_ID' />
+								<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+							</form>
+						</div>
+						<div class="clearfix">
+
+						</div>
+						<!-- ENDS Respond -->
+					<!-- ENDS Comments switcher -->
+
+                </div>
+                <!-- ENDS posts -->
+
+{% endblock %}

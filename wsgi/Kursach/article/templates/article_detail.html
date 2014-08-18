@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}
+    Single
+{% endblock %}
+{% block content %}
+{% load staticfiles %}
+<!-- posts -->
+                <div id="posts">
+
+                    <h1 class="sub-heading">{{ article.title}}</h1>
+
+
+                    <!-- entry-standard -->
+                        {% include 'includes/entry/image.html' %}
+                    <!-- ENDS entry-standard -->
+
+                    <div class="clearfix"></div>
+
+                    <!-- Comments switcher -->
+                        {% include 'includes/comments_switcher.html' %}
+                    <!-- ENDS Comments switcher -->
+                </div>
+                <!-- ENDS posts -->
+
+
+{% endblock %}

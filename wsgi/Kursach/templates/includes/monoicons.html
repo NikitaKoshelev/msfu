@@ -1,0 +1,9 @@
+                    {% for image in image_list %}
+                        <div class="one-third last">
+                            <p class="info-box">
+                                <img src="/{{ image }}" alt="{{ image }}" title="{{ image }}" class="alignleft" />
+                                {{ image }}
+                            </p>
+                        </div>
+                    {% endfor %}
+                    <div class="clearfix"></div>

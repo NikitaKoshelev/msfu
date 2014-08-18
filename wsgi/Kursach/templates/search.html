@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %} Результаты поиска {% endblock title %}
+{% block content %}
+                <!-- posts -->
+                <div id="posts">
+                    {% if search_message != '' %}
+                        {{ search_message }}
+                    {% else %}
+                        {% for article in result %}
+                           {% include 'includes/entry/standart.html' %}
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <!-- ENDS posts -->
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+        <div id="posts">
+        <form method="post" action="article/create/">
+            {% csrf_token %}
+            <div>
+                <fieldset>
+                {% for field in form %}
+                <div>
+                    {{ field.label_tag }}
+
+                    {{ field }}
+                </div>
+                {% endfor %}
+                </fieldset>
+            </div>
+        </form>
+        </div>
+        <script type="text/javascript">document.getElementById("id_title").focus();</script>
+        <script type="text/javascript">
+        (function($) {
+            var field;
+        })(django.jQuery);
+        </script>
+{% endblock %}

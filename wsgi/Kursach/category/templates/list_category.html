@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+                <div id="posts">
+                    <h2 class="sub-heading">
+                       Категории
+                    </h2>
+
+                    {% for category in categories %}
+                         <p><a href="/категория/{{ category.name }}" title="Read post" class="recent-thumb">
+                            {{ category.title }}: category_quantityArticles {{ category.category_quantityArticles }}; get_quantity_articles {{ category.get_quantity_articles }}
+                        </a></p>
+                    {% endfor %}
+
+                </div>
+                <div class="clear">
+
+                </div>
+
+{% endblock %}

@@ -1,0 +1,30 @@
+                    <script type="text/javascript" src="http://www.google.com/jsapi?key=ABQIAAAAyXu_1Zw3-DbyonSxgLICyxQ-I6o-NlCYgOr-loEEFEeu8iZ9qRRmG3g0keVax-xpFh-J4V95Bueprw" ></script>
+                    <script type="text/javascript" >google.load("maps","2.x");</script>
+
+                    <script type="text/javascript">
+
+                        jQuery(document).ready(function($) {
+
+                        //##########################################
+                        // Google maps
+                        //##########################################
+
+                        // You can get the latitud and Longitude values at http://itouchmap.com/latlong.html
+
+                        var latitude = 44.8011821;
+                        var longitude = -68.7778138;
+
+                        // center map
+                        var map = new GMap2(document.getElementById("map"));
+                        var point = new GLatLng(latitude, longitude);
+                        map.setCenter(point, 16);
+
+                        // Set marker
+                        marker = new GMarker(point);
+                        map.addOverlay(marker);
+
+                        // controls
+                        map.addControl(new GLargeMapControl());
+
+                        });
+                    </script>

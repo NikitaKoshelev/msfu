@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+{% load staticfiles%}
+ <head>
+  <meta charset="utf-8">
+  <title>{% block title %}InformSystem{% endblock %}</title>
+  <!-- CSS -->
+  <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css" media="screen" />
+  <link rel="stylesheet" href="{% static 'css/social-icons.css' %}" type="text/css" media="screen" />
+  {% include 'includes/head.html' %}
+ </head>
+ <body>
+  {% include 'includes/modal/login_modal.html' %}
+  <!-- WRAPPER -->
+  <div id="bottom-bg">
+   <div id="wrapper">
+    <div id="top-header">
+     <a href="/">
+      <img src="{% static  'img/logo.png' %}"/>
+     </a>
+    </div>
+    <nav>
+     <ul id="nav" class="sf-menu">
+      <li>
+       <a href="/">
+        Блог
+        <span class="subheader">
+         Читать поток
+        </span>
+       </a>
+      </li>
+      <li>
+       <a href="/page/">
+        Страница
+        <span class="subheader">
+         Многоцелевой шаблон
+        </span>
+       </a>
+      </li>
+      <li>
+       <a href="/portfolio/">
+        Портфолио
+        <span class="subheader">
+         смотреть недавние работы
+        </span>
+       </a>
+      </li>
+      <li>
+       <a href="/contact/">
+        Контакты
+        <span class="subheader">
+         Кликни для просмотра
+        </span>
+       </a>
+      </li>
+      <li class="current-menu-item">
+       <a href="#">
+        Выпадающее
+        <span class="subheader">
+         Посмотреть подпункты
+        </span>
+       </a>
+       <ul>
+        <li>
+         <a href="#">
+          Подменю 1
+         </a>
+        </li>
+        <li>
+         <a href="#">
+          Подменю 2
+         </a>
+        </li>
+        <li>
+         <a href="#">
+          Подменю 3
+         </a>
+        </li>
+       </ul>
+      </li>
+     </ul>
+     <!-- search -->
+     {% include 'includes/search.html' %}
+     <!-- ENDS search -->
+     <!-- social -->
+     <ul id="social-bar">
+      <li>
+       <a href="http://www.facebook.com" class="poshytip facebook" title="Become a fan">
+       </a>
+      </li>
+      <li>
+       <a href="http://www.twitter.com" class="poshytip twitter" title="Follow my tweets">
+       </a>
+      </li>
+      <li>
+       <a href="#" class="poshytip rss" title="RSS Feed">
+       </a>
+      </li>
+     </ul>
+     <!-- ENDS social -->
+    </nav>
+    <div id="content">
+     {% block content %}{% endblock %}
+     <footer>
+      <!-- footer-cols -->
+      <ul id="footer-cols">
+       <li>
+        <h6>
+         <a href="/категории/" title="Read post" class="recent-thumb">
+          Категории
+         </a>
+        </h6>
+        <ul>
+         {% for category in categories %}
+         <li class="cat-item">
+          <a href="/{{ category.get_absolute_url }}">
+           {{ category.title }}
+          </a>
+         </li>
+         {% endfor %}
+        </ul>
+       </li>
+       <li>
+        <h6>
+         Free Templates
+        </h6>
+        Visit
+        <strong>
+         <a href="http://templatecreme.com/">
+          Template Creme
+         </a>
+        </strong>
+        for a selected list of well-made FREE Templates and WordPress Themes.
+       </li>
+       <li>
+        <div id="tweets" class="footer-col tweet">
+         <h6>
+          Twitter widget
+         </h6>
+        </div>
+       </li>
+      </ul>
+     </footer>
+     <!-- ENDS footer-cols -->
+     <div id="footer-bottom">
+      <h6>
+       © 2014 Информационная система кафедры :
+       <a href="http://www.msfu.ru/info/fest/aiu/">
+        "Автоматизация и Управление"
+       </a>
+      </h6>
+      <span>
+       Сайт создан студентами
+       <a href="http://www.msfu.ru">
+        Московского Государственного Университета Леса
+       </a>
+      </span>
+     </div>
+    </div>
+    <!-- ENDS content -->
+    <div id="signin">
+     {% if user_auth %}
+     <button type="button">
+      <a href="/аккаунты/Выход/">
+       Выйти ({{ user }})
+      </a>
+     </button>
+     {% else %}
+     <button class="md-trigger" data-modal="login">
+      Войти
+     </button>
+     {% endif %}
+    </div>
+    <!-- sidebar -->
+    {% include 'includes/sidebar.html' %}
+    <!-- ENDS sidebar -->
+    <div class="clearfix">
+    </div>
+    <div id="to-top">
+     Наверх
+     <hr />
+    </div>
+    <div id="to-back" onclick="history.back()">
+     <div>
+      {{ user }}
+     </div>
+     Назад
+    </div>
+   </div>
+  </div>
+  <div class="md-overlay">
+  </div>
+  <!-- ENDS WRAPPER -->
+  <!-- classie.js by @desandro: https://github.com/desandro/classie -->
+  <script src="{% static 'js/classie.js"></script>
+  <script src="{% static 'js/modalEffects.js"></script>
+  <!-- for the blur effect -->
+  <!-- by @derSchepp https://github.com/Schepp/CSS-Filters-Polyfill -->
+  <script>
+	// this is important for IEs
+		var polyfilter_scriptpath = '/js/';
+  </script>
+  <script src="{% static 'js/cssParser.js' %}"></script>
+  <script src="{% static 'js/css-filters-polyfill.js' %}"></script>
+ </body>
+</html>

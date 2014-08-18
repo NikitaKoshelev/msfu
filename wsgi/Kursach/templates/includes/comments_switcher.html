@@ -1,0 +1,132 @@
+{% load staticfiles %}
+                    <div id="comments"></div>
+					<h6 class="show-comments">
+                        {{ article.get_quantity_comments }}
+                            Посмотреть комментарии
+                    </h6>
+					<div class="comments-switcher">
+
+						<!-- comments list -->
+                        <div id="comments-wrap">
+							<ol class="commentlist">
+    						{% for commentParent in commentParents %}
+
+                                <li class="comment even thread-even depth-1" id="li-comment-1">
+
+                                    <div id="comment-1" class="comment-body clearfix">
+								     	<img alt='' src='/media/{{ commentParent.user.ava }}/' class='avatar avatar-35 photo' height='35' width='35' />
+								     	<div class="comment-author vcard">
+                                            {{ commentParent.user }}
+                                        </div>
+
+								        <div class="comment-meta commentmetadata">
+									  		<span class="comment-date">
+                                                {{ commentParent.commentParent_dateCreate|timesince }}
+                                            </span>
+                                        {% if user_auth %}
+                                            {% if article.user == user_auth %}
+                                                <div class="md-modal md-effect-12" id="commentParent_{{ commentParent.id }}">
+	                                                <div class="md-content">
+                                                        <div>
+
+							                                <form action="commentParent/{{ commentParent.id }}/add/commentChild/" method="post" id="modal-comments">
+                                                                {% csrf_token %}
+								                                <h4 class="s-title">
+                                                                    Оставить комментарий
+                                                                </h4>
+								                                {% for field in form %}
+                                                                    {{ field }}
+                                                                {% endfor %}
+								                                <p>
+                                                                    <button type="submit">Опубликовать</button>
+                                                                </p>
+							                                </form>
+						                                </div>
+                                                    </div>
+                                                </div>
+                                                <span class="comment-reply-link-wrap">
+                                                    <button class="md-trigger" data-modal="commentParent_{{ commentParent.id }}">
+                                                        Ответить</button>
+                                                </span>
+                                            {% endif %}
+                                        {% endif %}
+										</div>
+
+								  		<div class="comment-inner">
+									   		<p>
+                                                    {{ commentParent.commentParent_text }}
+                                            </p>
+								 		</div>
+							     	</div>
+
+
+									<!-- child -->
+									<ul class='children'>
+                                    {% for commentChild in commentParent.get_commentChild %}
+
+							  			<li class="comment odd alt depth-2" id="li-comment-2">
+											<div id="comment-2" class="comment-body clearfix">
+												<img alt='' src='/media/{{ commentChild.user.ava }}' class='avatar avatar-35 photo' height='35' width='35' />
+							      				<div class="comment-author vcard">
+                                                    {{ commentChild.user }}
+                                                </div>
+												<div class="comment-meta commentmetadata">
+							  						<span class="comment-date">
+                                                        {{ commentChild.commentChild_dateCreate|timesince  }}
+                                                    </span>
+                                                    <!--
+													<span class="comment-reply-link-wrap">
+                                                        <a class='comment-reply-link' href='replytocom=24#respond' onclick='return addComment.moveForm("comment-2", "2", "respond", "432")'>
+                                                            Ответить
+                                                        </a>
+                                                    </span>
+                                                    -->
+												</div>
+							  					<div class="comment-inner">
+										   			<p>
+                                                        {{ commentChild.commentChild_text }}
+                                                    </p>
+							     			 	</div>
+							 				</div>
+										</li>
+                                    {% endfor %}
+									</ul>
+									<!-- ENDS child -->
+								</li>
+                            {% endfor %}
+							</ol>
+						</div>
+                {% if user_auth %}
+                    {% if user_auth != article.user %}
+                        <!-- Respond -->
+						<div id="respond">
+
+							<form action="add/commentParent/" method="post" id="commentform">
+                                {% csrf_token %}
+								<h4 class="s-title">
+                                    Оставить комментарий
+                                </h4>
+								{% for field in form %}
+                                    <div style="max-width: 700px;">
+                                    {{ field }}
+                                    </div>
+                                {% endfor %}
+
+								<p>
+                                    <input name="submit" type="submit" id="submit" tabindex="5" value="Опубликовать" />
+                                </p>
+
+								<input type='hidden' name='comment_{{ article.name }}' value='' id='comment_{{ article.name }}' />
+								<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+							</form>
+						</div>
+						<div class="clearfix">
+
+						</div>
+						<!-- ENDS Respond -->
+                    {% endif %}
+                {% else %}
+                    <h6>Чтобы оставить комментарий надо авторизоваться</h6>
+				{% endif %}
+							<!-- ENDS comments list -->
+                    </div>

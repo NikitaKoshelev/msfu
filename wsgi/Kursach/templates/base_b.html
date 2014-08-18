@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+
+
+    <body>
+        {% include 'includes/modal/login_modal.html' %}
+
+        <!-- WRAPPER -->
+
+        <div id="bottom-bg">
+
+            <div id="wrapper">
+
+                <div id="top-header">
+                    <a href="">
+                        <img src="{% static "img/logo.png"%}" alt="ZEN" id="logo" />
+                    </a>
+                </div>
+
+                <nav>
+                    <ul id="nav" class="sf-menu">
+                        <li>
+                            <a href="/">
+                                –ë–ª–æ–≥
+                                <span class="subheader">
+                                    –ß–∏—Ç–∞—Ç—å –ø–æ—Ç–æ–∫
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/page/">
+                                –°—Ç—Ä–∞–Ω–∏—Ü–∞
+                                <span class="subheader">
+                                    –ú–Ω–æ–≥–æ—Ü–µ–ª–µ–≤–æ–π —à–∞–±–ª–æ–Ω
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/portfolio/">
+                                –ü–æ—Ä—Ç—Ñ–æ–ª–∏–æ
+                                <span class="subheader">
+                                    —Å–º–æ—Ç—Ä–µ—Ç—å –Ω–µ–¥–∞–≤–Ω–∏–µ —Ä–∞–±–æ—Ç—ã
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/contact/">
+                                –ö–æ–Ω—Ç–∞–∫—Ç—ã
+                                <span class="subheader">
+                                    –ö–ª–∏–∫–Ω–∏ –¥–ª—è –ø—Ä–æ—Å–º–æ—Ç—Ä–∞
+                                </span>
+                            </a>
+                        </li>
+                        <li class="current-menu-item">
+                            <a href="#">
+                                –í—ã–ø–∞–¥–∞—é—â–µ–µ
+                                <span class="subheader">
+                                    –ü–æ—Å–º–æ—Ç—Ä–µ—Ç—å –ø–æ–¥–ø—É–Ω–∫—Ç—ã
+                                </span>
+                            </a>
+                            <ul>
+                                <li>
+                                    <a href="#">
+                                        –ü–æ–¥–º–µ–Ω—é 1
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        –ü–æ–¥–º–µ–Ω—é 2
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        –ü–æ–¥–º–µ–Ω—é 3
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+
+
+                    <!-- search -->
+                        {% include 'includes/search.html' %}
+                    <!-- ENDS search -->
+
+
+                    <!-- social -->
+
+                    <ul id="social-bar">
+                        <li>
+                            <a href="http://www.facebook.com" class="poshytip facebook" title="Become a fan">
+
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://www.twitter.com" class="poshytip twitter" title="Follow my tweets">
+
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="poshytip rss" title="RSS Feed">
+
+                            </a>
+                        </li>
+                    </ul>
+
+                    <!-- ENDS social -->
+
+
+                </nav>
+
+
+
+                <div id="content">
+
+
+                    {% block content %}{% endblock %}
+
+
+                    <footer>
+
+
+                        <!-- footer-cols -->
+
+                        <ul id="footer-cols">
+                            <li>
+                                <h6>
+                                    <a href="/–∫–∞—Ç–µ–≥–æ—Ä–∏–∏/" title="Read post" class="recent-thumb">
+                                        –ö–∞—Ç–µ–≥–æ—Ä–∏–∏
+                                    </a>
+                                </h6>
+                                <ul>
+                                    {% for category in categories %}
+                                        <li class="cat-item">
+                                            <a href="/{{ category.get_absolute_url }}">
+                                                {{ category.title }}
+                                            </a>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </li>
+                            <li>
+                                <h6>Free Templates</h6>
+                                Visit
+                                <strong>
+                                    <a href="http://templatecreme.com/" >
+                                        Template Creme
+                                    </a>
+                                </strong>
+                                for a selected list of well-made FREE Templates and WordPress Themes.
+                            </li>
+                            <li>
+                                <div id="tweets" class="footer-col tweet">
+                                    <h6>Twitter widget</h6>
+                                </div>
+                            </li>
+                        </ul>
+
+                    </footer>
+
+                        <!-- ENDS footer-cols -->
+
+                    <div id="footer-bottom">
+                        <h6>
+                            ¬© 2014 –ò–Ω—Ñ–æ—Ä–º–∞—Ü–∏–æ–Ω–Ω–∞—è —Å–∏—Å—Ç–µ–º–∞ –∫–∞—Ñ–µ–¥—Ä—ã :
+                            <a href="http://www.msfu.ru/info/fest/aiu/">
+                                "–ê–≤—Ç–æ–º–∞—Ç–∏–∑–∞—Ü–∏—è –∏ –£–ø—Ä–∞–≤–ª–µ–Ω–∏–µ"
+                            </a>
+                        </h6>
+                        <span>
+                            –°–∞–π—Ç —Å–æ–∑–¥–∞–Ω —Å—Ç—É–¥–µ–Ω—Ç–∞–º–∏
+                            <a href="http://www.msfu.ru" >
+                                –ú–æ—Å–∫–æ–≤—Å–∫–æ–≥–æ –ì–æ—Å—É–¥–∞—Ä—Å—Ç–≤–µ–Ω–Ω–æ–≥–æ –£–Ω–∏–≤–µ—Ä—Å–∏—Ç–µ—Ç–∞ –õ–µ—Å–∞
+                            </a>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- ENDS content -->
+
+                <!-- Bootstrap core CSS
+                <link href="{% static 'bootstrap/dist/css/bootstrap.css'%}" rel="stylesheet">-->
+
+                <!-- Custom styles for this template
+                <link href="{% static 'bootstrap/examples/signin/signin.css' %}" rel="stylesheet">-->
+
+                <div id="signin">
+                    {% if user %}
+                        <button type="button"><a href="/–∞–∫–∫–∞—É–Ω—Ç—ã/–í—ã—Ö–æ–¥/">–í—ã–π—Ç–∏ ({{ user }})</a></button>
+                    {% else %}
+                        <button class="md-trigger" data-modal="login">–í–æ–π—Ç–∏</button>
+                    {% endif %}
+                </div>
+                <!-- sidebar -->
+                    {% include 'includes/sidebar.html' %}
+                <!-- ENDS sidebar -->
+
+
+                <div class="clearfix">
+
+                </div>
+
+                <div id="to-top">
+                    –ù–∞–≤–µ—Ä—Ö
+                    <hr>
+                </div>
+                <div id="to-back" onclick="history.back()">
+                <div>{{ user }}</div>
+
+                    –ù–∞–∑–∞–¥
+                </div>
+
+            </div>
+        </div>
+        <div class="md-overlay"></div>
+        <!-- ENDS WRAPPER -->
+        <!-- classie.js by @desandro: https://github.cﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂﬂ

@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block content %}
+                <div id="posts">
+
+                    <script type="text/javascript" src={% static "js/form-validation.js" %}></script>
+                    <form id="registerForm" method="post" action=".">
+                    {% csrf_token %}
+                        <h1 class="sub-heading">
+                            Регистрация
+                        </h1>
+                        <fieldset class="register">
+                            {% for field in form %}
+
+                                    <div class="reg_label">
+                                        <label>
+                                            {{ field.label_tag}}
+                                        </label>
+                                    </div>
+                                    <div class="reg_input">
+                                        {{ field }}
+                                    </div>
+
+                                {% if field.help_text %}
+                                    <div class="clearfix">
+                                        {{ field.help_text }}
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                            </fieldset>
+                            <p>
+                                <input type="submit" value="Зарегистрироваться" name="submit" id="submit"/>
+                                <span id="error" class="warning">
+                                    {{ field.errors }}
+                                </span>
+                            </p>
+
+                    </form>
+                </div>
+{% endblock %}

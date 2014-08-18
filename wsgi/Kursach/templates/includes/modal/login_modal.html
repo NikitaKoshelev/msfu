@@ -1,0 +1,23 @@
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/component.css' %}" />
+<script src="{% static 'js/modernizr.custom.js' %}"></script>
+
+<div class="md-modal md-effect-12" id="login">
+	<div class="md-content">
+        <div>
+            <form method="POST" class="form-signin">
+                {% csrf_token %}
+                <div>
+                <h2 class="form-signin-heading" align="center">Войти</h2>
+                <input type="text" class="form-control" placeholder="Имя пользователя" autofocus name="login_username">
+                <input type="password" class="form-control" placeholder="Пароль" name="login_password">
+                <label class="checkbox">
+                    <p><input type="checkbox" value="remember-me"> Запомнить меня</p>
+                    <p><a style="color: #F4F4F4" href="/аккаунты/Регистрация/">Регистрация</a></p>
+                </label>
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Вход</button>
+                </div>
+            </form>
+        </div>
+	</div>
+</div>
